@@ -1,0 +1,18 @@
+1. I plan on exhibiting professionalism at Techtonica by wearing appropriate clothes, no swearing, and exuding confidence. In a full time engineering job, it would not change, however, the dress code may be different.
+2. If I found out I would be an hour late, I would let my manager and teammates know about it.
+3. If I realized I only had time to finish most of my work by the due date, I would elt all my group mates know.
+4. The most effect ways for me to learn and retain information are by seeing, doing, and by seeing other doing problems.
+5. A growth mindset is the opposite from a fixed mindset. Meaning, you belive you can achieve anything even if you have no prior experience, or a knack for a given thing. 
+6.Im using MacOS and other OS examples are Linux and Windows
+7. Computers need an OS to bridge software and hardware
+8. If i felt stuck on a coding problem I would spend some time maybe 20 minutes thinking about the problem, trying to pattern match, and then later ask for help per the template.
+9. I plan on meeting and staying connected ith new people this month by networking with people at the conference and study group I'm attending (hosting by women who code).
+10. Effective body language exudes confidence and confidence and competence is communicated when they are used well.
+11. Effective word choice involves not using swear words and being purposeful with word choice.
+Confidence, competence, and professionalism is communicated when used well,
+12. You can uild trust in a team by having reliability and accountability
+13. Devices on the internet are physically connected to each other by IP/TCP and protocols
+14. You can use Wifi, fiber optic cable, satellites, cell services
+15.IP
+16. They use protocols like TCP (transmission control protocol) and the Internet Protocol(IP) which is like an addess.
+17.TCP which uses packets (which by themselves don't make anything more reliable).
