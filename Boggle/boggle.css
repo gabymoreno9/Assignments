@@ -1,0 +1,47 @@
+.the-title{
+    color: #000;
+    font-family: helvetica;
+    margin: 0, auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 40px;
+}
+
+.letter{
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    
+}
+
+.row2{
+    margin: 0 auto;
+    display: flex;
+}
+.row3{
+    margin: 0 auto;
+    display: flex;
+}
+.row4{
+    margin: 0 auto;
+    display: flex;
+}
+
+.row1{
+    clear: both;
+    display: flex;
+    margin: 0 auto;
+
+}
+.board{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
