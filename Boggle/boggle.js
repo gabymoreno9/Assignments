@@ -14,7 +14,9 @@ let tiles = rando(16)
         let row = Math.floor(i % 4);
         let column = Math.floor(i % 4);
         let square = document.getQuerySelector(".board" > div:nth child(" + row + ") >
-        div:nth child(" + column + " )");
+        div:nth child(" + column + ")");
         square.innerHTML = tiles[i];
     }
 // console.log(rando(1));
+
+//on click the tile changes color

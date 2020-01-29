@@ -18,8 +18,11 @@
     margin-bottom: 20px;
     margin-top: -10px;
     margin-right: 20px
-
 }
+/* .letter : focus{
+    background-color: red;
+    color: red;
+} */
 
 .row2 {
     display: flex;
@@ -41,7 +44,13 @@
     margin: 0 auto;
     padding-top: 50px;
 }
-
+.timer{
+  color:#000;
+  font-size:20px;
+  text-align:center;
+  font-family: helvetica;
+  padding-top: 30px;
+}
 
 
 
