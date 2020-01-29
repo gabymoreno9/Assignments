@@ -2,7 +2,6 @@
 <html lang="en" dir="ltr">
     <head>
         <link rel="stylesheet" type="text/css" href="boggle.css">
-        <script type="text/javascript" src="boggle.js"></script>
         <meta charset="utf-8">
         <title>Boggle</title>
     </head>
@@ -30,8 +29,6 @@
                 </div>
                 </section>
 
-                <div style="clear: both;"></div>
-
                 <section>
                 <div class="row2">
                     <div class="letter">
@@ -46,7 +43,7 @@
                     <div class="letter">
                     </div>
                 </div>
-                <section>
+                </section>
 
                 <section>
                 <div class="row3">
@@ -82,28 +79,6 @@
 
             </div>
 
-            <script>
-            document.getElementById('timer').innerHTML = 003 + ":" + 00; startTimer();
-
-           function startTimer() {
-             var presentTime = document.getElementById('timer').innerHTML;
-             var timeArray = presentTime.split(/[:]+/);
-             var m = timeArray[0];
-             var s = checkSecond((timeArray[1] - 1));
-             if(s==59){m=m-1}
-             if(m<0){alert('timer completed')}
-
-             document.getElementById('timer').innerHTML =
-               m + ":" + s;
-             console.log(m)
-             setTimeout(startTimer, 1000);
-           }
-
-           function checkSecond(sec) {
-             if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
-             if (sec < 0) {sec = "59"};
-             return sec;
-           }
-            </script>
+            <script type="text/javascript" src="boggle.js"></script>
     </body>
 </html>
