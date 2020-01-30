@@ -1,3 +1,35 @@
+html { height: 100%; }
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    width: 300px;
+    margin-top: 140px;
+    background-color: #30292F;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: helvetica;
+}
+.sidebar-header h1{
+    margin-top: 50px;
+    margin-bottom: 80px;
+    text-align: center;
+    color: #E5E5E5;
+
+}
+.word{
+    text-align: center;
+    color: #E5E5E5;
+    line-height: 30px;
+}
+
+.content {
+    flex-grow: 1;
+}
+
 .the-title{
     color: #000;
     font-family: helvetica;
@@ -22,29 +54,37 @@
     text-align: center;
     line-height: 100px;
     cursor: pointer;
+    background-color: rgba(0,0,0,0.1);
+    user-select: none;
 }
+.letter:last-of-type { margin-right: 0; }
+body section .letter:hover { background-color: #9D858D99; }
+
+
+.record{
+    height: 60px;
+    background-color: red;
+    width: 400px;
+    padding-top: 50px;
+    margin-left: auto;
+    display: flex;
+    position: absolute;
+    overflow: auto;
+}
+
+
 /* .letter : focus{
     background-color: red;
     color: red;
 } */
 
-.row2 {
-    display: flex;
-}
-.row3{
-    display: flex;
-}
-.row4{
+
+section > div {
     display: flex;
 }
 
-.row1{
-    clear: both;
-    display: flex;
-
-}
 .board{
-    width: 500px;
+    width: 460px;
     margin: 0 auto;
     padding-top: 50px;
 }
@@ -60,52 +100,18 @@
 
 
 /* domino effect */
-section { clear: left; }
 
-  section:nth-child(1) .letter {
-    -webkit-animation: fade 1.2s linear 0s both;
-    -moz-animation: fade 1.2s linear 0s both;
-    -o-animation: fade 1.2s linear 0s both;
-    -ms-animation: fade 1.2s linear 0s both;
-    animation: fade 1.2s linear 0s both; }
-  section:nth-child(2) .letter {
-    -webkit-animation: fade 1.2s linear 0.2s both;
-    -moz-animation: fade 1.2s linear 0.2s both;
-    -o-animation: fade 1.2s linear 0.2s both;
-    -ms-animation: fade 1.2s linear 0.2s both;
-    animation: fade 1.2s linear 0.2s both; }
-  section:nth-child(3) .letter {
-    -webkit-animation: fade 1.2s linear 0.4s both;
-    -moz-animation: fade 1.2s linear 0.4s both;
-    -o-animation: fade 1.2s linear 0.4s both;
-    -ms-animation: fade 1.2s linear 0.4s both;
-    animation: fade 1.2s linear 0.4s both; }
-  section:nth-child(4) .letter {
-    -webkit-animation: fade 1.2s linear 0.6s both;
-    -moz-animation: fade 1.2s linear 0.6s both;
-    -o-animation: fade 1.2s linear 0.6s both;
-    -ms-animation: fade 1.2s linear 0.6s both;
-    animation: fade 1.2s linear 0.6s both; }
+section:nth-child(1) .letter {
+    animation: fade 1.2s linear 0s reverse; }
+section:nth-child(2) .letter {
+    animation: fade 1.2s linear 0.2s reverse; }
+section:nth-child(3) .letter {
+    animation: fade 1.2s linear 0.4s reverse; }
+section:nth-child(4) .letter {
+    animation: fade 1.2s linear 0.6s reverse; }
 
 
-
-@-webkit-keyframes fade {
-  0% {background: black; }
-  50% {background: rgba(0, 0, 0, 0.5); }
-  100% {background: rgba(0, 0, 0, 0.1); } }
-@-moz-keyframes fade {
-  0% {background: black; }
-  50% {background: rgba(0, 0, 0, 0.5); }
-  100% {background: rgba(0, 0, 0, 0.1); } }
-@-o-keyframes fade {
-  0% {background: black; }
-  50% {background: rgba(0, 0, 0, 0.5); }
-  100% {background: rgba(0, 0, 0, 0.1); } }
-@-ms-keyframes fade {
-  0% {background: black; }
-  50% {background: rgba(0, 0, 0, 0.5); }
-  100% {background: rgba(0, 0, 0, 0.1); } }
 @keyframes fade {
-  0% {background: black; }
-  50% {background: rgba(0, 0, 0, 0.5); }
-  100% {background: rgba(0, 0, 0, 0.1); } }
+  0% {background: rgba(0, 0, 0, 0.1); }
+  100% {background: rgba(0, 0, 0, 1); }
+}

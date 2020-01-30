@@ -2,7 +2,7 @@
 
 function rando(length){
     let tiles = [];
-    let characters = 'AABCDEEFGHIIJKLMNOOPRSTUUVWXYZ';
+    let characters = 'AABCDEEFGHIIJKLMNOOPRSTUVWXYZ';
     let charactersArray = characters.split('').concat(['Qu'])
     for (let i = 0 ; i < length; i++){
         tiles.push(charactersArray[Math.floor(Math.random() * charactersArray.length)]);
@@ -42,9 +42,47 @@ function startTimer() {
     document.getElementById('timer').innerHTML = minutes + ":" + formattedSeconds;
 
    if (minutes == 0 && seconds == 0) {
-       alert('Times up now biatch!')
+       alert('Times up now biatch!' + newWords.length)
    }
    else {
        setTimeout(startTimer, 1000);
    }
+}
+
+
+// When the user clicks on a letter
+let currentlySelectedLetters = []
+
+document.addEventListener("mousedown", function(event) {
+    if (event.target.matches(".letter")) {
+        currentlySelectedLetters.push(event.target);
+        event.target.style.backgroundColor = '#9D858D';
+        document.addEventListener("mousemove", handleMouseDrag);
+    }
+})
+
+//when we release the mouse so like, stop clicking, this code runs
+document.addEventListener("mouseup", function(event) {
+    document.removeEventListener("mousemove", handleMouseDrag);
+
+    let newWord = ''
+    for (let i = 0; i < currentlySelectedLetters.length; i++) {
+        currentlySelectedLetters[i].style.backgroundColor = null;
+        newWord += currentlySelectedLetters[i].innerHTML;
+    }
+    currentlySelectedLetters = [];
+
+    let newWordElement = document.createElement('div');
+    newWordElement.className = 'word';
+    newWordElement.innerHTML = newWord;
+    document.querySelector(".sidebar").appendChild(newWordElement);
+})
+
+function handleMouseDrag(event) {
+    if (event.target.matches('.letter')) {
+        if (!currentlySelectedLetters.includes(event.target)) {
+            currentlySelectedLetters.push(event.target);
+            event.target.style.backgroundColor = '#9D858D';
+        }
+    }
 }
