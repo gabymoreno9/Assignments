@@ -42,7 +42,8 @@ function startTimer() {
     document.getElementById('timer').innerHTML = minutes + ":" + formattedSeconds;
 
    if (minutes == 0 && seconds == 0) {
-       alert('Times up now biatch!' + newWords.length)
+       let wordsFound = document.querySelectorAll('.sidebar .word');
+       alert('Times up! You found ' + wordsFound.length + " words!")
    }
    else {
        setTimeout(startTimer, 1000);
@@ -72,12 +73,22 @@ document.addEventListener("mouseup", function(event) {
     }
     currentlySelectedLetters = [];
 
-    let newWordElement = document.createElement('div');
-    newWordElement.className = 'word';
-    newWordElement.innerHTML = newWord;
-    document.querySelector(".sidebar").appendChild(newWordElement);
+//this bit gets all the existing words and makes sure it don't count duplicates
+    let existingWordElements = document.querySelectorAll(".sidebar .word");
+    let existingWords = [];
+    for (let i = 0; i < existingWordElements.length; i++) {
+        existingWords.push(existingWordElements[i].innerHTML)
+    }
+
+    if (!existingWords.includes(newWord)) {
+        let newWordElement = document.createElement('div');
+        newWordElement.className = 'word';
+        newWordElement.innerHTML = newWord;
+        document.querySelector(".sidebar").appendChild(newWordElement);
+    }
 })
 
+//the dragging bitsss
 function handleMouseDrag(event) {
     if (event.target.matches('.letter')) {
         if (!currentlySelectedLetters.includes(event.target)) {
