@@ -30,7 +30,13 @@ function rando(length){
 ```
 
 Randomized Letter but like On The Board. OK so there are 16 lil boxes and I named
-those tiles. Because there are 16 tiles, you use 16. 
+those tiles. Because there are 16 tiles, you use 16. Then a for loop is used to
+put one letter in each square. Followed by looping through the array of random letters that
+are generator and putting one in each div. Let's start backwards. Square uses
+the row and column to get the right DOM element to put the letter in. To get the
+row, i is divided by 4 and then rounded down. And to get the column, I mod by 4.
+Nth child starts at 1 instead of starting at zero, I have to add one to both the
+row and the column. Once that's done, I set the innerHTML to tiles[i].
 
 ```
 let tiles = rando(16)
@@ -47,12 +53,12 @@ for (let i = 0; i < tiles.length; i++){
 So, the timer is created with JS. I made the time set to 3 minutes and it starts
 counting down as soon as the page loads. The minutes and seconds are split by a ":".
 If the seconds are about to be less than 0, they restart to 59 seconds and a minute
-has passed by so the minute is subtracted by 1. the formattedSecconds is basically
+has passed by so the minute is subtracted by 1. The formattedSeconds is basically
 in response to seeing only one 0 appear after the seconds return single digits
 (aka, under 10). Afterwards I wanted something to let the user know that the time
 is up so I did an alert and connected the amount of words a user was able to
-get. The amount of words is found by using wordsFound.length, which is in the
-next section.
+get. The amount of words is found by using querySelectorAll on ".sidebar .word",
+which is in the next section.
 
 ```
 document.getElementById('timer').innerHTML = "3:00"
@@ -86,20 +92,90 @@ function startTimer() {
 ```
 
 
-### Break down into end to end tests
+### Click, Clack, Moo
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
+This section handles when a user clicks down onto a letter. The event listener changes the background color and then adds a "mousemove" listener for figuring out what other letters are dragged over next.
 
 ```
-Give an example
+let currentlySelectedLetters = []
+
+document.addEventListener("mousedown", function(event) {
+    if (event.target.matches(".letter")) {
+        currentlySelectedLetters.push(event.target);
+        event.target.style.backgroundColor = '#9D858D';
+        document.addEventListener("mousemove", handleMouseDrag);
+    }
+})
+```
+This section takes care of when the user lets go of the click.
+
+```
+document.addEventListener("mouseup", function(event) {
+    document.removeEventListener("mousemove", handleMouseDrag);
+
+    let newWord = ''
+    for (let i = 0; i < currentlySelectedLetters.length; i++) {
+        currentlySelectedLetters[i].style.backgroundColor = null;
+        newWord += currentlySelectedLetters[i].innerHTML;
+    }
+    currentlySelectedLetters = [];
+```
+This section makes sure that there's no duplicated words
+
+```
+let existingWordElements = document.querySelectorAll(".sidebar .word");
+let existingWords = [];
+for (let i = 0; i < existingWordElements.length; i++) {
+    existingWords.push(existingWordElements[i].innerHTML)
+}
+
+if (!existingWords.includes(newWord)) {
+    let newWordElement = document.createElement('div');
+    newWordElement.className = 'word';
+    newWordElement.innerHTML = newWord;
+    document.querySelector(".sidebar").appendChild(newWordElement);
+}
+})
+```
+Last but not least the dragging.
+
+```
+function handleMouseDrag(event) {
+    if (event.target.matches('.letter')) {
+        if (!currentlySelectedLetters.includes(event.target)) {
+            currentlySelectedLetters.push(event.target);
+            event.target.style.backgroundColor = '#9D858D';
+        }
+    }
+}
+
+
+```
+
+### The Domino Problem
+
+Okay so the domino sequence on the letters ended up being insanely problematic and would not let me add any functionality or style changes to the letters. After like 12 hours, I found this resource (https://stackoverflow.com/questions/26778434/should-hover-pseudo-state-style-change-work-after-css-animation-completes) that taught me that
+I can use my cool domino effect but I would have to play them in reverse. Yeah
+idk either, but it did work.
+```
+
+/* domino effect */
+
+section:nth-child(1) .letter {
+    animation: fade 1.2s linear 0s reverse; }
+section:nth-child(2) .letter {
+    animation: fade 1.2s linear 0.2s reverse; }
+section:nth-child(3) .letter {
+    animation: fade 1.2s linear 0.4s reverse; }
+section:nth-child(4) .letter {
+    animation: fade 1.2s linear 0.6s reverse; }
+
+
+@keyframes fade {
+  0% {background: rgba(0, 0, 0, 0.1); }
+  100% {background: rgba(0, 0, 0, 1); }
+}
+
 ```
 
 ## Built With
