@@ -13,10 +13,31 @@ class Event {
         let answer = "All Tickets: "
         for (let i = 0; i < this.availableTickets.length; i++){
             let ticket = this.availableTickets[i];
-            answer += ticket.name + "($" + ticket.price + ") "
+            answer += `${i + 1}. ${ticket.name} ($${ticket.price}) `
         }
         return answer
     }
+    searchTickets(lower, upper){
+        let tickets = []
+        for (let i = 0; i < this.availableTickets.length; i++){
+            let ticket = this.availableTickets[i];
+            if (ticket.price >= lower && ticket.price <= upper) {
+                tickets.push(ticket)
+            }
+        }
+        
+        if (tickets.length === 0) {
+            return "No tickets available"
+        }
+        else {
+            let answer = "Eligible Tickets: "
+            for (let i = 0; i < tickets.length; i++){
+                answer += `${i + 1}. ${tickets[i].name} ($${tickets[i].price}) `
+            }
+            return answer
+        }
+    }
+
 }
 
 class TicketType{
@@ -44,11 +65,14 @@ console.log(eventArray);
 $(document).ready(function() {
     let html = "";
     $.each(eventArray, function(index, item) {
-      html+= `<li>${item.name} - ${item.description}</li>`;
+      html+= `<li>${item.name} - ${item.description} - ${item.searchTickets(50, 200)}</li>`;
     });
     // insert final html into #event...
     $("#event").html(html);
   });
+
+  eventObj1.addAvailableTickets("human", 299);
+  eventObj1.addAvailableTickets("vampire", 99);
 
   eventObj2.addAvailableTickets("General Admission", 25)
   eventObj2.addAvailableTickets("Floor Seating", 80)
