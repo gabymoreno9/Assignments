@@ -83,3 +83,5 @@ recommender.saveUserEvent(gabby, kittyPetting);
 recommender.saveUserEvent(mitchell, kittyPetting);
 
 console.log(recommender.users)
+
+module.exports = { EventRecommender, User, Event}
