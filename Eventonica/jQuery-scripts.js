@@ -8,10 +8,10 @@ $(document).ready( () => {
     eventRecommender.addUser("Hannah");
     eventRecommender.addUser("Sergio");
 
-    eventRecommender.addEvent("Montigo Concert", "  |   February 24, 2020", "   |   Music");
-    eventRecommender.addEvent("Latinx in Tech", "  |   March 4, 2020", "   |   Technology");
-    eventRecommender.addEvent("Corgi Conference", "  |   April 1, 2020", "   |   Lifestyle");
-    eventRecommender.addEvent("Rebecca Sawyer: Live", "  |   May 21, 2020", "   |   Music");
+    eventRecommender.addEvent("Montigo Concert", "February 24, 2020", "Music");
+    eventRecommender.addEvent("Latinx in Tech", "March 4, 2020", "Technology");
+    eventRecommender.addEvent("Corgi Conference", "April 1, 2020", "Lifestyle");
+    eventRecommender.addEvent("Rebecca Sawyer: Live", "May 21, 2020", "Music");
 
 
 
@@ -24,7 +24,7 @@ $(document).ready( () => {
 
     for (let i = 0; i < eventRecommender.events.length; i++) {
         let event = eventRecommender.events[i];
-        $('#all-events').append('<li>' + event.title +  event.date + event.category + '</li>');
+        $('#all-events').append('<li>' + event.title + '  |  ' + event.date + '  |  ' + event.category + '</li>');
     }
 
     //Show and Adding a user
@@ -95,7 +95,13 @@ $(document).ready( () => {
     $("#date-search input[type='submit']").click(function(e) {
         e.preventDefault();
         let date = $("#date-search input[type='text']").val();
-        console.log(eventRecommender.findEventsByDate(date));
+        let results = eventRecommender.findEventsByDate(date);
+    
+        // Reset the results area so it doesn't keep adding more lines every time you click the button
+        $("#date-search h4").html("Results:");
+        for (let i = 0; i < results.length; i++) {
+            $("#date-search h4").append('<li>' + results[i].title + '</li>');
+        }
     });
 
 
