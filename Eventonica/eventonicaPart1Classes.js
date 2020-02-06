@@ -11,8 +11,8 @@ class User {
 }
 
 class Event {
-    constructor(name, date, category){
-        this.name = name;
+    constructor(title, date, category){
+        this.title = title;
         this.date = date;
         this.category = category;
     }
@@ -26,32 +26,42 @@ class EventRecommender {
         this.users = [];
     }
 
-    addEvent(event) {
+    addEvent(title, date, category) {
         // Adds a new Event to the System
-        this.events.push(event)
+        //supposed to be an object, which we already have the event class
+        //new Event(a, b, c)
+        //instance of thde event class
+        this.events.push(new Event(title, date, category));
     }
 
-    addUser(user) {
+    addUser(username) {
         // Adds a new User to the System
-        this.users.push(user)
+        this.users.push(new User(username));
     }
 
-    saveUserEvent(user, event){
+    saveUserEvent(username, eventTitle){
         // Allow users to save events to a personal Events array.
-        user.saveEvent(event)
+        let user = this.users.find(function(item) { return item.username === username });
+        let event = this.events.find(function(item) { return item.title === eventTitle });
+        if (user && event) {
+            user.saveEvent(event);
+        }
+        else {
+            console.log("BISH I DON'T KNOW HER");
+        }
     }
 
-    deleteUser(user) {
+    deleteUser(username) {
         // Deletes a User from the system
         this.users = this.users.filter(function(item) { 
-            return item !== user
+            return item.username !== username
         })
     }
    
-    deleteEvent(event) {
+    deleteEvent(eventTitle) {
         // Deletes the Event from the system
         this.events = this.events.filter(function(item) {
-            return item !== event
+            return item.title !== eventTitle
         })
     }
 
@@ -72,16 +82,13 @@ class EventRecommender {
 
 
 let recommender = new EventRecommender();
-let gabby = new User("gibbyyyy");
-let mitchell = new User("michoooo");
-let kittyPetting = new Event("Pet lots of kitties", "February 5", "animals");
 
-recommender.addUser(mitchell);
-recommender.addUser(gabby);
-recommender.addEvent(kittyPetting);
-recommender.saveUserEvent(gabby, kittyPetting);
-recommender.saveUserEvent(mitchell, kittyPetting);
+recommender.addUser("michoooo");
+recommender.addUser("gibbyyyy");
+recommender.addEvent("Pet lots of kitties", "February 5", "animals");
+recommender.saveUserEvent("gibbyyyy", "Pet lots of kitties");
+recommender.saveUserEvent("michoooo", "Pet lots of kitties");
 
-console.log(recommender.users)
+console.log(recommender.users);
 
-module.exports = { EventRecommender, User, Event}
+module.exports = { EventRecommender, User, Event }

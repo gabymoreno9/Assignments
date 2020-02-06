@@ -8,40 +8,45 @@ describe("EventRecommender", () => {
 
   describe("addEvent", () => {
     it("adds a new Event to the system", () => {
-      er.addEvent("Change Me");
+      er.addEvent("Goff Concert", "11/09/2020", "Music");
       expect(er.events.length).toEqual(1);
-      expect(er.events[0].title).toEqual("Change Me"); // what are some other things you can test?
+      expect(er.events[0].title).toEqual("Goff Concert"); // what are some other things you can test?
     });
   });
 
   describe("addUser", () => {
     it("adds a new User to the system", () => {
-      er.addUser("Change Me");
-      expect(er.user.length).toEqual(1);
+      er.addUser("Jennifer")
+      expect(er.users.length).toEqual(1);
+      expect(er.users[0].username).toEqual("Jennifer")
     });
   });
 
   describe("saveUserEvent", () => {
     it("adds an event to a user's personal event array", () => {
-      er.addEvent("Make a new event");
-      er.addUser("Make a new user");
-      er.saveUserEvent("event", "user"); // change these to match your method signature
-      expect(er.user.personalEvents.length).toEqual(1);
+      er.addEvent("Goff Concert", "11/09/2020", "Music");
+      er.addUser("Jennifer");
+      er.saveUserEvent("Jennifer", "Goff Concert");
+      expect(er.users[0].username).toEqual("Jennifer");
+      expect(er.users[0].savedEvents.length).toEqual(1);
+      expect(er.users[0].savedEvents[0].title).toEqual("Goff Concert");
     });
   });
 
   describe("deleteUser", () => {
     it("removes a User from the system", () => {
-      er.addUser("Make a new user here that you will delete later");
-      er.deleteUser("Change Me");
-      expect(er.user.length).toEqual(0);
+      er.addUser("Jennifer");
+      expect(er.users.length).toEqual(1);
+      er.deleteUser("Jennifer");
+      expect(er.users.length).toEqual(0);
     });
   });
 
   describe("deleteEvent", () => {
     it("removes the event from the system", () => {
-      er.addEvent("A new event that you will delete later");
-      er.deleteEvent("Change Me");
+      er.addEvent("Goff Concert");
+      expect(er.events.length).toEqual(1);
+      er.deleteEvent("Goff Concert");
       expect(er.events.length).toEqual(0);
     });
   });
