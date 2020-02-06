@@ -81,14 +81,6 @@ class EventRecommender {
 }
 
 
-let recommender = new EventRecommender();
-
-recommender.addUser("michoooo");
-recommender.addUser("gibbyyyy");
-recommender.addEvent("Pet lots of kitties", "February 5", "animals");
-recommender.saveUserEvent("gibbyyyy", "Pet lots of kitties");
-recommender.saveUserEvent("michoooo", "Pet lots of kitties");
-
-console.log(recommender.users);
-
-module.exports = { EventRecommender, User, Event }
+if (typeof module !== 'undefined'){
+    module.exports = { EventRecommender, User,  Event }
+}
