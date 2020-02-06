@@ -36,18 +36,41 @@ h3{
     font-family: 'Maven Pro', sans-serif;
     color: #FFFFFF;
     padding-left: 50px;
+
 }
 h4{
     font-family: 'Maven Pro', sans-serif;
     color: #FFFFFF;
+    padding-top: 20px;
+    padding-left: 80px;
+}
+#all-users li{
+    padding-left: 70px;
+    padding-top: 10px;
 }
 #all-users{
     font-family: 'Maven Pro', sans-serif;
     color: #FFFFFF;
 }
+#all-users h3{
+    padding-top: 20px;
+}
 #all-events li{
     padding-bottom: 20px;
 }
+.usr-mgmt h3{
+    padding-top: 20px;
+}
+#add-user{
+    padding-left: 70px;
+    padding-bottom: 10px;
+}
+#delete-user{
+    padding-left: 70px;
+    padding-bottom: 10px;
+    padding-top: 20px;
+}
+
 label{
     font-family: 'Maven Pro', sans-serif;
     color: #FFFFFF;
@@ -72,6 +95,37 @@ li{
 }
 #add-event label{
     color: #191E25;
+}
+#add-event {
+    padding-left: 70px !important;
+    padding-bottom: 20px;
+
+}
+#delete-event label{
+    color: #191E25;
+}
+#delete-event {
+    padding-left: 70px !important;
+    padding-bottom: 20px;
+
+}
+
+
+#date-search-form{
+    padding-left: 60px;
+    padding-top: 20px;
+}
+#category-search-form{
+    padding-left: 60px;
+    padding-top: 10px;
+}
+#category-search h3{
+    padding-top: 30px;
+}
+
+#save-user-event{
+    padding-left: 60px;
+    padding-top: 20px;
 }
 
 

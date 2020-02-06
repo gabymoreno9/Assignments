@@ -47,7 +47,7 @@ class EventRecommender {
             user.saveEvent(event);
         }
         else {
-            console.log("BISH I DON'T KNOW HER");
+            console.log("Does not exist");
         }
     }
 
@@ -72,7 +72,7 @@ class EventRecommender {
         })
     }
     
-    findEventsbyCategory(category){
+    findEventsByCategory(category){
         // Returns all events in a given category
         return this.events.filter(function(event){
             return event.category === category;
