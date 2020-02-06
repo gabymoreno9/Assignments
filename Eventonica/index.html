@@ -1,6 +1,6 @@
 <html>
 <head>
-
+    <link rel="stylesheet" href="index.css">
     <script src="eventonicaPart1Classes.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="jQuery-scripts.js"></script>
@@ -32,7 +32,7 @@
     <div>
         <h3>Delete User</h3>
         <form id="delete-user">
-            <label>User ID:</label>
+            <label>User Name:</label>
             <input type="text" id="delete-user-id">
             <br/>
             <input type="submit">
@@ -44,16 +44,17 @@
     <h2>Event Management</h2>
     <div>
         <h3>All Events</h3>
-        <ul>
-            <!-- Use jQuery to display all Events here -->
+        <ul id="all-events">
+            <!-- Use jQuery to display all Users here -->
         </ul>
+       
 
         <h3>Add Event</h3>
         <form id="add-event">
-            <label>Event ID:</label>
-            <input type="text" id="add-event-id">
+            <!-- <label>Event ID:</label>
+            <input type="text" id="add-event-id"> -->
             <br/>
-            <label>Event name:</label>
+            <label>Event Name:</label>
             <input type="text" id="add-event-name">
             <br/>
             <!-- Add more form fields here -->
@@ -64,7 +65,7 @@
     <div>
         <h3>Delete Event</h3>
         <form id="delete-event">
-            <label>Event ID:</label>
+            <label>Event Name:</label>
             <input type="text" id="delete-event-id">
             <br/>
             <input type="submit">
