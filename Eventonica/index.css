@@ -1,3 +1,129 @@
 h1{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+.event-pic img{
+    width: 30%;
+    float: right;
+}
+
+h2{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
     text-align: center;
+}
+h3{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+h4{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+#all-users{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+#all-events li{
+    padding-bottom: 20px;
+}
+label{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+li{
+    font-family: 'Maven Pro', sans-serif;
+    color: #FFFFFF;
+}
+/* for the navbar */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #191E25;
+}
+
+.navbar {
+    font-size: 18px;
+    background-color: #191E25;
+    padding-bottom: 10px;
+}
+
+.main-nav {
+    list-style-type: none;
+    display: none;
+}
+
+.nav-links,
+.logo {
+    text-decoration: none;
+    color: #CED6EA;
+    font-family: 'Maven Pro', sans-serif;
+
+}
+
+.main-nav li {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.logo {
+    font-family: 'Maven Pro', sans-serif;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.navbar-toggle {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 24px;
+}
+
+.active {
+    display: block;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 0;
+        height: 70px;
+        align-items: center;
+    }
+
+    .main-nav {
+        display: flex;
+        margin-right: 30px;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .main-nav li {
+        margin: 0;
+    }
+
+    .nav-links {
+        margin-left: 40px;
+    }
+
+    .logo {
+        margin-top: 0;
+    }
+
+    .navbar-toggle {
+        display: none;
+    }
+
+    .logo:hover,
+    .nav-links:hover {
+        color: rgba(255, 255, 255, 1);
+    }
 }

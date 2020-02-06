@@ -4,10 +4,36 @@
     <script src="eventonicaPart1Classes.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="jQuery-scripts.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Event Recommender</h1>
+    <nav class="navbar">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+            <i class="fas fa-bars"></i>
+        </span>
+        <a href="#" class="logo">eventonica</a>
+        <ul class="main-nav" id="js-menu">
+            <li>
+                <a href="#" class="nav-links">Events</a>
+            </li>
+            <li>
+                <a href="#" class="nav-links">About Us</a>
+            </li>
+            <li>
+                <a href="#" class="nav-links">Contact Us</a>
+            </li>
+     
+        </ul>
+    </nav>
+
+    <div class = "hero">
+        <h1>Event Recommender</h1>
+            <div class = "event-pic">
+                <img src= "conference.jpeg">
+            </div>
+    </div>
 
     <h2>User Management</h2>
     <div>
@@ -56,6 +82,10 @@
             <br/>
             <label>Event Name:</label>
             <input type="text" id="add-event-name">
+            <label>Event Date:</label>
+            <input type="text" id="add-event-date">
+            <label>Event Category:</label>
+            <input type="text" id="add-event-category">
             <br/>
             <!-- Add more form fields here -->
             <input type="submit">
@@ -117,6 +147,15 @@
         <input type="submit">
     </form>
 </div>
+
+<script>
+let mainNav = document.getElementById('js-menu');
+let navBarToggle = document.getElementById('js-navbar-toggle');
+
+navBarToggle.addEventListener('click', function () {
+  mainNav.classList.toggle('active');
+});
+</script>
 
 </body>
 
