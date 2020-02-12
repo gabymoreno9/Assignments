@@ -1,8 +1,5 @@
-body img{
-    background: cover;
-    width: 100%;
+body {
+    background-image: url("https://media.giphy.com/media/14uQ3cOFteDaU/giphy.gif");
     background-position: center;
-}
-body{
-    background-color: black;
+    background-size: cover;
 }
