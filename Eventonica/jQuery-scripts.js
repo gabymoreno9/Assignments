@@ -22,6 +22,7 @@ $(document).ready( () => {
 
     for (let i = 0; i < eventRecommender.events.length; i++) {
         let event = eventRecommender.events[i];
+        //formatting
         $('#all-events').append('<li>' + event.title + '  |  ' + event.date + '  |  ' + event.category + '</li>');
     }
 
@@ -125,7 +126,8 @@ $(document).ready( () => {
         $('#all-users').html('');
         for (let i = 0; i < eventRecommender.users.length; i++) {
             let user = eventRecommender.users[i];
-            let eventNames = user.savedEvents.map(function(event) { return event.title });
+            let eventNames = user.savedEvents.map(function(event) { 
+                return event.title });
             
             let events = ''
             if (eventNames.length > 0) {
