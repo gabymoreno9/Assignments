@@ -1,0 +1,8 @@
+body img{
+    background: cover;
+    width: 100%;
+    background-position: center;
+}
+body{
+    background-color: black;
+}
