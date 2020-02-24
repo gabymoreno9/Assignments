@@ -1,11 +1,18 @@
 const express = require('express')
-const app = express()
+const bodyParser = require('body-parser')
 const { EventRecommender, User, Events } = require("./eventonicaPart1Classes")
-const port = 8888
 
+const app = express()
+const port = 8888
 const er = new EventRecommender()
 
+er.addUser("Gabby")
+er.addUser("Michi")
 er.addEvent("Gabby's Movie Night", "April 20, 2020", "Movies")
+er.addEvent("Micho's Piano Night", "April 22, 2020", "Music")
+
+
+app.use(bodyParser.json())
 
 
 //////// GET ENDPOINTS ///////////
@@ -27,9 +34,7 @@ app.get('/events-by-category', function (request, result) {
 app.get('/events-by-date', function(request, result){
     let date = request.query.date
     result.send(JSON.stringify(er.findEventsByDate(date)))
-
 })
-
 
 
 
@@ -37,19 +42,35 @@ app.get('/events-by-date', function(request, result){
 ///////// POST REQUESTS ///////
 
 //delete user
-app.post('/', (req, res) => res.send('Hello World!'))
+app.post('/delete-user', (req, res) => {
+    // console.log(req.body)
+    er.deleteUser(req.body.username)
+    res.send(JSON.stringify(er.users))
+})
 
 //delete event
-app.post('/', (req, res) => res.send('Hello World!'))
+app.post('/delete-event', (req, res) => {
+    er.deleteEvent(req.body.eventTitle)
+    res.send(JSON.stringify(er.events))
+})
 
 // addUser 
-app.post('/', (req, res) => res.send('Hello World!'))
+app.post('/add-user', (req, res) => {
+    er.addUser(req.body.username)
+    res.send(JSON.stringify(er.users))
+})
 
 // addEvent
-app.post('/', (req, res) => res.send('Hello World!'))
+app.post('/add-event', (req, res) => {
+    er.addEvent(req.body.title, req.body.date, req.body.category)
+    res.send(JSON.stringify(er.events))
+})
 
 //save user event
-app.post('/', (req, res) => res.send('Hello World!'))
+app.post('/save-user-event', (req, res) => {
+    er.saveUserEvent(req.body.username, req.body.eventTitle)
+    res.send(JSON.stringify(er.events))
+})
 
 
 ///////// 
