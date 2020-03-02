@@ -1,5 +1,4 @@
 
-
 $(document).ready( () => {
     const eventRecommender = new EventRecommender(); 
     eventRecommender.addUser("Michelle");
@@ -26,6 +25,7 @@ $(document).ready( () => {
     }
 
     //Show and Adding a user
+    //try to implement .submit instead of the .click mess
     $("#add-user input[type='submit']").click(function(e) {
         //this is to prevent the page from reloading
         e.preventDefault();
