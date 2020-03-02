@@ -41,8 +41,12 @@ class EventRecommender {
 
     saveUserEvent(username, eventTitle){
         // Allow users to save events to a personal Events array.
-        let user = this.users.find(function(item) { return item.username === username });
-        let event = this.events.find(function(item) { return item.title === eventTitle });
+        //find works for grabbing the event object 
+        //update the user inside the array
+        let user = this.users.find(function(item) { 
+            return item.username === username });
+        let event = this.events.find(function(item) { 
+            return item.title === eventTitle });
         if (user && event) {
             user.saveEvent(event);
         }
@@ -67,16 +71,18 @@ class EventRecommender {
 
     findEventsByDate(date){
         // Returns all events on a given date 
-        return this.events.filter(function(event){
-            return event.date === date;
-        })
-    }
+        //return this.events.filter(function(event){
+        return this.events.filter((event) => event.date === date;)
+            // return event.date === date;
+        }
+    
     
     findEventsByCategory(category){
         // Returns all events in a given category
-        return this.events.filter(function(event){
-            return event.category === category;
-        })
+        return this.events.filter((event) => event.category === category;
+        // return this.events.filter(function(event){
+        //     return event.category === category;
+        // })
     }
 }
 

@@ -1,18 +1,27 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors');
+
 const { EventRecommender, User, Events } = require("./eventonicaPart1Classes")
 
 const app = express()
 const port = 8888
 const er = new EventRecommender()
 
-er.addUser("Gabby")
-er.addUser("Michi")
-er.addEvent("Gabby's Movie Night", "April 20, 2020", "Movies")
-er.addEvent("Micho's Piano Night", "April 22, 2020", "Music")
+er.addUser("Michelle");
+er.addUser("Ariel");
+er.addUser("Robyn");
+er.addUser("Hannah");
+er.addUser("Sergio");
+
+er.addEvent("Montigo Concert", "February 24, 2020", "Music");
+er.addEvent("Latinx in Tech", "March 4, 2020", "Technology");
+er.addEvent("Corgi Conference", "April 1, 2020", "Lifestyle");
+er.addEvent("Rebecca Sawyer: Live", "May 21, 2020", "Music");
 
 
 app.use(bodyParser.json())
+app.use(cors({ origin: true, credentials: true }))
 
 
 //////// GET ENDPOINTS ///////////
@@ -74,6 +83,5 @@ app.post('/save-user-event', (req, res) => {
 
 
 ///////// 
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
