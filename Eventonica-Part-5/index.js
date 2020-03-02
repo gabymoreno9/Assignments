@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
+
 const { EventRecommender, User, Events } = require("./eventonicaPart1Classes")
 
 const app = express()
@@ -82,6 +83,5 @@ app.post('/save-user-event', (req, res) => {
 
 
 ///////// 
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
