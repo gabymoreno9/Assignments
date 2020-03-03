@@ -14,7 +14,8 @@ render(){
   const message = this.state.message,
     maxCharacterAmount = 100,
     currentCharacterCount = message.length,
-    overCharacterLimit = messageLength => {};
+    overCharacterLimit = maxCharacterAmount - currentCharacterCount,
+    isOverLimit = currentCharacterCount > maxCharacterAmount;
 
   return (
     <div className="App">
@@ -36,11 +37,14 @@ render(){
         <textarea value={message} onChange={this.handleMessageChange}></textarea>
         <br/>
         <span>
-            Current Character Count: {currentCharacterCount}
+            Current Character Count:{" "}
+            <span className={isOverLimit ? "bad" : "good"}>
+              {overCharacterLimit}
+            </span>
             <br/>
-            {message.length <= maxCharacterAmount && message.length >= 0
-              ? 'Good'
-              : 'Over Limit'}
+            {isOverLimit
+              ? <span className="bad">Over Limit</span>
+              : <span className="good">Good</span>}
           </span>
           <br/>
       <input type="submit" value = "Submit"></input>
