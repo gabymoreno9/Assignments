@@ -1,18 +1,42 @@
 import React, {Component} from 'react';
 
+let maxCharacterAmount = 100
+
+
 class App extends Component{
   constructor(props){
     super(props);
-    this.state = { message: ''};
+    this.state = {
+      username: 'person1',
+      message: '',
+      tweets: []
+    };
   }
 
+handleSwitchUser = event => {
+  this.setState({ username: event.target.value })
+};
 handleMessageChange = event => {
   this.setState({ message: event.target.value });
 };
 
+sendTweet = event => {
+  event.preventDefault()
+  if (this.state.message.length <= maxCharacterAmount) {
+    let newTweet = {
+      message: this.state.message,
+      username: this.state.username,
+      timestamp: new Date()
+    }
+    this.setState({
+      tweets: this.state.tweets.concat([newTweet]),
+      message: ''
+    })
+  }
+}
+
 render(){
   const message = this.state.message,
-    maxCharacterAmount = 100,
     currentCharacterCount = message.length,
     overCharacterLimit = maxCharacterAmount - currentCharacterCount,
     isOverLimit = currentCharacterCount > maxCharacterAmount;
@@ -24,14 +48,13 @@ render(){
 
         <label for ="entryform"> Entry Form </label>
         <form name ="entryform" id ="entry-form">
-        <select id = "usernames">
+        <select value={this.state.username} onChange={this.handleSwitchUser}>
           <option value ="person1">Person 1</option>
           <option value ="person2">Person 2</option>
           <option value ="person3">Person 3</option>
           <option value ="person4">Person 4</option>
           <option value ="person5">Person 5</option>
-
-        </select>{''}
+        </select>
         <br/>
 
         <textarea value={message} onChange={this.handleMessageChange}></textarea>
@@ -47,8 +70,15 @@ render(){
               : <span className="good">Good</span>}
           </span>
           <br/>
-      <input type="submit" value = "Submit"></input>
+      <input type="submit" value="Submit" onClick={this.sendTweet} />
       </form>
+      {this.state.tweets.map(tweet =>
+        <div key={tweet.timestamp.toString()}>
+          <div><strong>{tweet.username}</strong> - {tweet.timestamp.toString()}</div>
+          <div>{tweet.message}</div>
+        </div>
+      )}
+      {this.state.tweets.length === 0 ? "No posts yet" : ""}
     </div>
   );
   }
