@@ -44,7 +44,7 @@ render(){
   return (
     <div className="App">
 
-        <h1> Tweeter</h1>
+        <h1>Tweeter</h1>
 
         <label for ="entryform"> Entry Form </label>
         <form name ="entryform" id ="entry-form">
