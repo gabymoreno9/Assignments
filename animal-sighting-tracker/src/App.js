@@ -6,7 +6,8 @@ class App extends React.Component {
     sightings: [],
     individual: 1,
     location: '',
-    health: ''
+    health: '',
+    contact: '',
   }
 
   componentDidMount () {
@@ -24,6 +25,9 @@ class App extends React.Component {
   
   handleChangeHealth = event =>
     this.setState({ health: event.target.value })
+  
+  handleChangeContact = event =>
+    this.setState({ contact: event.target.value })
 
   handleSubmitForm = event => {
     event.preventDefault();
@@ -34,11 +38,12 @@ class App extends React.Component {
       body: JSON.stringify({
         individual_seen: this.state.individual,
         sighting_location: this.state.location,
-        appeared_healthy: this.state.health
+        appeared_healthy: this.state.health,
+        contact: this.state.contact
       })
     }
     fetch('http://localhost:8888/add-sighting', options)
-    this.setState({ individual: 1, location: '', health: '' });
+    this.setState({ individual: 1, location: '', health: '', contact: '' });
   }
 
   // Rendering
@@ -55,7 +60,8 @@ class App extends React.Component {
           return <li key={index}>
             Individual: {sighting.nickname} | 
             Location: {sighting.sighting_location} |
-            Appeared Healthy: {sighting.appeared_healthy}
+            Appeared Healthy: {sighting.appeared_healthy} |
+            Contact: {sighting.contact}
           </li>
         })}
         
@@ -74,6 +80,10 @@ class App extends React.Component {
 
           <label>Appeared Healthy:</label>
           <input type="text" value={this.state.health} onChange={this.handleChangeHealth} />
+          <br />
+
+          <label>Contact:</label>
+          <input type="text" value={this.state.contact} onChange={this.handleChangeContact} />
           <br />
 
           <input type="submit" text="Add" />

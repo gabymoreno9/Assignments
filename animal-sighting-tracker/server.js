@@ -16,7 +16,7 @@ app.use(cors({ origin: true }));
 
 app.get('/sightings', function(request, response) {
     let query = `
-      SELECT nickname, sighting_location, appeared_healthy
+      SELECT nickname, sighting_location, appeared_healthy, contact
       FROM sightings
       JOIN individuals ON individuals.id = sightings.individual_seen`
 
@@ -28,12 +28,13 @@ app.get('/sightings', function(request, response) {
 
 app.post('/add-sighting', function(request, response) {
     let query = `
-        INSERT INTO sightings (individual_seen, sighting_location, appeared_healthy)
-        VALUES (?, ?, ?)`;
+        INSERT INTO sightings (individual_seen, sighting_location, appeared_healthy, contact)
+        VALUES ($1, $2, $3, $4)`;
     let parameters = [
         request.body.individual_seen,
         request.body.sighting_location,
-        request.body.appeared_healthy
+        request.body.appeared_healthy,
+        request.body.contact
     ];
 
     database.query(query, parameters, function(error, results) {
